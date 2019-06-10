@@ -63,7 +63,7 @@ class Student
   end
 
   def self.new_from_db(row)
-    student.Student.new(row[1],row[2],row[0])
+    student=Student.new(row[1],row[2],row[0])
   end
 
   def self.find_by_name
