@@ -43,7 +43,7 @@ class Student
 
       DB[:conn].execute(sql,self.name,self.grade)
 
-      @id=DB[:conn].execute("SELECT last_insert_rowid() FROM songs").flatten
+      @id=DB[:conn].execute("SELECT last_insert_rowid() FROM students").flatten
     end
 
   end
