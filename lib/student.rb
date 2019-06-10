@@ -43,7 +43,9 @@ class Student
     sql=<<-SQL
     SELECT last_row_insert() FROM students
     SQL
+
     @id=DB[:conn].execute(sql)
+    
     self
   end
 
