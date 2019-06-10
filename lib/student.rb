@@ -48,6 +48,15 @@ class Student
   end
 
   def update
+    sql=<<-SQL
+    UPDATE students
+    SET name = ?, grade = ?
+    WHERE id=?
+    SQL
+
+    DB[:conn].execute(sql,self.name,self.grade)
+
+    @id=DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
   end
 
   def create
