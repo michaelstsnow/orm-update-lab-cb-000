@@ -34,18 +34,18 @@ class Student
 
   def save
     sql=<<-SQL
-    INSERT INTO students IF NOT EXISTS (name,grade)
+    INSERT INTO students IF NOT EXISTS (id,name,grade)
     VALUES (?,?)
     SQL
 
-    DB[:conn].execute(sql,self.name,self.grade)
+    DB[:conn].execute(sql,self.id,self.name,self.grade)
 
     sql=<<-SQL
     SELECT last_row_insert() FROM students
     SQL
 
     @id=DB[:conn].execute(sql)
-    
+
     self
   end
 
