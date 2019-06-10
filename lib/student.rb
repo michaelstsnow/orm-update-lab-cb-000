@@ -34,6 +34,7 @@ class Student
 
   def save
     if self.id
+      self.update
     else
       sql=<<-SQL
       INSERT INTO students IF NOT EXISTS (id,name,grade)
