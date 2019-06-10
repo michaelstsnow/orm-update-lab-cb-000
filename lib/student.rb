@@ -71,7 +71,7 @@ class Student
     SELECT * FROM students
     WHERE name=?
     SQL
-    DB[:conn].execute(sql,name).flatten
+    Student.new_from_db(DB[:conn].execute(sql,name).flatten)
   end
 
 
