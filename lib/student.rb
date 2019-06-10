@@ -40,13 +40,7 @@ class Student
 
     DB[:conn].execute(sql,self.id,self.name,self.grade)
 
-    sql=<<-SQL
-    SELECT last_row_insert() FROM students
-    SQL
-
-    @id=DB[:conn].execute(sql)
-
-    self
+    @id=DB[:conn].execute("SELECT last_insert_rowid() FROM songs").flatten
   end
 
   def create
