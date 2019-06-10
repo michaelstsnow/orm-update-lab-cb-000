@@ -39,6 +39,11 @@ class Student
     SQL
 
     DB[:conn].execute(sql,self.name,self.grade)
+
+    sql=<<-SQL
+    SELECT last_row_insert() FROM students
+    SQL
+    @id=DB[:conn].execute(sql)
   end
 
   def create
