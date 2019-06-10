@@ -37,8 +37,8 @@ class Student
       self.update
     else
       sql=<<-SQL
-      INSERT INTO students IF NOT EXISTS (id,name,grade)
-      VALUES (?,?,?)
+      INSERT INTO students (name,grade)
+      VALUES ()?,?)
       SQL
 
       DB[:conn].execute(sql,self.id,self.name,self.grade)
