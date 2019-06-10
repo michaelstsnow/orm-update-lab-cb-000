@@ -45,7 +45,9 @@ class Student
 
       @id=DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
     end
+  end
 
+  def update
   end
 
   def create
@@ -55,9 +57,6 @@ class Student
   end
 
   def self.find_by_name
-  end
-
-  def update
   end
 
 
