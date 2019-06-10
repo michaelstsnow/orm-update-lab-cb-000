@@ -35,15 +35,16 @@ class Student
   def save
     if self.id
     else
+      sql=<<-SQL
+      INSERT INTO students IF NOT EXISTS (id,name,grade)
+      VALUES (?,?,?)
+      SQL
+
+      DB[:conn].execute(sql,self.id,self.name,self.grade)
+
+      @id=DB[:conn].execute("SELECT last_insert_rowid() FROM songs").flatten
     end
-    sql=<<-SQL
-    INSERT INTO students IF NOT EXISTS (id,name,grade)
-    VALUES (?,?,?)
-    SQL
 
-    DB[:conn].execute(sql,self.id,self.name,self.grade)
-
-    @id=DB[:conn].execute("SELECT last_insert_rowid() FROM songs").flatten
   end
 
   def create
