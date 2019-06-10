@@ -33,7 +33,7 @@ class Student
   end
 
   def save
-    if self.id 
+    if self.id
     else
     end
     sql=<<-SQL
